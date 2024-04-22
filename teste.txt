@@ -1,3 +1,7 @@
-frase qualquer apenas
-para ilustrar
-alguma coisa
+
+0 1 0 1 0 1 0 1 0 0
+1 0 1 1 0 0 1 1 0 0
+0 1 0 0 0 1 0 1 0 0
+0 0 0 1 1 0 0 0 0 0
+1 0 1 0 0 1 0 1 0 0
+0 1 0 1 0 0 0 0 1 0
