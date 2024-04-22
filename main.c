@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) {
 	FILE *file;
 	int  i = 0;
-	char matriz[MAX][MAX], arquivo[30], frase[100];
+	char matriz[MAX][MAX], arquivo[30], frase[MAX];
 	
 	printf("Digite o nome do arquivo que deseja ler ou SAIR para terminar o programa: ");
 	scanf("%s", &arquivo);
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 			printf("Nao foi possivel abrir arquivo.");
 		}
 	
-		while(fgets(frase, 100, file) != NULL){
+		while(fgets(frase, MAX, file) != NULL){
 			strcpy(matriz[i], frase);	
 			printf("%s", matriz[i]);
 			i++;
@@ -37,4 +37,3 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-//TESTE
