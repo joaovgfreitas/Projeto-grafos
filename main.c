@@ -7,12 +7,12 @@ void charToInt(char matrizChar[MAX][MAX], int matrizInt[MAX][MAX], int tamanho) 
     int i, j;
     for (i = 0; i < tamanho; i++) {
         for (j = 0; j < tamanho; j++) {
-            if (strcmp(&matrizChar[i][j], "0") == 0) { //Checa se o caracter na matriz é igual 0
+            if (matrizChar[i][j] == '0') { //Checa se o caracter na matriz é igual 0
                 matrizInt[i][j] = 0; //Inseri na matriz de inteiro o 0
-                printf("0"); //APENAS TESTANDO SE CAIU NA COMPARAÇÃO CERTO
-            } else if (strcmp(&matrizChar[i][j], "1") == 0) { //Checa se o caracter na matriz é igual 1
+                printf("%i", matrizInt[i][j]);
+            } else { //Checa se o caracter na matriz é igual 1
                 matrizInt[i][j] = 1; //Inseri na matriz de inteiro o 1
-                printf("1"); //APENAS TESTANDO SE CAIU NA COMPARAÇÃO CERTO
+                printf("%i", matrizInt[i][j]);
             }
         }
         //printf("%i", matrizInt[i]);
