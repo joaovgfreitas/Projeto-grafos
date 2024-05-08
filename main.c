@@ -1,59 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define MAX 100
 
-//Converte a matriz do tipo char em inteiro. ACHO QUE ESTÁ COM ERRO NA HORA DE COMPARAR COM STRCMP!!!
-void charToInt(char matrizChar[MAX][MAX], int matrizInt[MAX][MAX], int tamanho) { 
-    int i, j;
-    for (i = 0; i < tamanho; i++) {
-        for (j = 0; j < tamanho; j++) {
-            if (matrizChar[i][j] == '0') { //Checa se o caracter na matriz é igual 0
-                matrizInt[i][j] = 0; //Insere na matriz de inteiro o 0
-                printf("%i", matrizInt[i][j]);
-            } else { //Checa se o caracter na matriz é igual 1
-                matrizInt[i][j] = 1; //Insere na matriz de inteiro o 1
-                printf("%i", matrizInt[i][j]);
-            }
-        }
-        //printf("%i", matrizInt[i]);
-    }
-}
-
 int main(int argc, char *argv[]) {
-	FILE *file;
-	int  i = 0, j = 0, matrizInt[MAX][MAX];
-	char matrizChar[MAX][MAX], arquivo[30], frase[MAX];
-	
-	printf("Digite o nome do arquivo que deseja ler ou SAIR para terminar o programa: ");
-	scanf("%s", arquivo);
-	
-	while(strcmp(arquivo, "SAIR") != 0){ //Compara o nome do arquivo com SAIR, para sair do programa
+    FILE *file;
+    int i = 0, j = 0, numVertices;
+    char arquivo[30], frase[MAX];
+
+    printf("Digite o nome do arquivo que deseja ler ou SAIR para terminar o programa: ");
+    scanf("%s", arquivo);
+
+    while (strcmp(arquivo, "SAIR") != 0) {
+        snprintf(arquivo, sizeof(arquivo), "%s.txt", arquivo); // Adiciona .txt ao final do nome escrito pelo usuário
+        file = fopen(arquivo, "r"); // Carrega o arquivo
+
+        if (file == NULL) { // Checa se o arquivo carregado é válido
+            printf("Nao foi possivel abrir arquivo.");
+            return 1;
+        }
 		
-		snprintf(arquivo, sizeof(arquivo), "%s.txt",arquivo); //Adiciona .txt ao final do nome escrito pelo usuário
-		file = fopen(arquivo, "r"); //Carrega o arquivo
-			
-		if(file == NULL){ //Checa se o arquivo carregado é válido
-			printf("Nao foi possivel abrir arquivo.");
-			return 1;
-		}
-	
-		while(fgets(frase, MAX, file) != NULL){ //Percorre linha por linha do txt e adiciona cada linha a uma matriz do tipo char
-			strcpy(matrizChar[i], frase); //Copia a linha do txt para a matriz
-			printf("%s", matrizChar[i]);
-			i++;
-		}
+		numVertices = 0;//Reinicia o contador de vertices
+        while (fgets(frase, MAX, file) != NULL) { // Percorre linha por linha do txt
+            numVertices++; // Contagem do número de vértices
+        }
+
+        fclose(file); // Fecha o arquivo
+
+        // Reabre o arquivo para ler a matriz do inicío
+        file = fopen(arquivo, "r");
+        if (file == NULL) {
+            printf("Nao foi possivel abrir arquivo.");
+            return 1;
+        }
+
+        int matriz[numVertices][numVertices];//Declaração da matriz
+        for (i = 0; i < numVertices; i++) {
+            for (j = 0; j < numVertices; j++) {
+                fscanf(file, "%i", &matriz[i][j]);//Lê caracter por caracter e escreve na matriz de inteiros;
+                printf("%i ", matriz[i][j]);
+            }
+            printf("\n");
+        }
+		fclose(file); // Fecha o arquivo
 		
-		charToInt(matrizChar, matrizInt, MAX);
-	
-		fclose(file); //Fecha o arquivo
-		printf("\n\n");
 		
-		printf("Digite o nome do arquivo que deseja ler ou SAIR para terminar o programa: ");
-		scanf("%s", &arquivo);
-	}
-	
-	printf("\nSaindo...\n");
-	return 0;
+
+        printf("\nDigite o nome do arquivo que deseja ler ou SAIR para terminar o programa: ");
+        scanf("%s", arquivo);
+    }
+
+    printf("\nSaindo...\n");
+    return 0;
 }
 
