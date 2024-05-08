@@ -3,15 +3,16 @@
 #include <string.h>
 #define MAX 100
 
-void charToInt(char matrizChar[MAX][MAX], int matrizInt[MAX][MAX], int tamanho) { //Converte a matriz do tipo char em inteiro. ACHO QUE ESTÁ COM ERRO NA HORA DE COMPARAR COM STRCMP!!!!!!
+//Converte a matriz do tipo char em inteiro. ACHO QUE ESTÁ COM ERRO NA HORA DE COMPARAR COM STRCMP!!!
+void charToInt(char matrizChar[MAX][MAX], int matrizInt[MAX][MAX], int tamanho) { 
     int i, j;
     for (i = 0; i < tamanho; i++) {
         for (j = 0; j < tamanho; j++) {
             if (matrizChar[i][j] == '0') { //Checa se o caracter na matriz é igual 0
-                matrizInt[i][j] = 0; //Inseri na matriz de inteiro o 0
+                matrizInt[i][j] = 0; //Insere na matriz de inteiro o 0
                 printf("%i", matrizInt[i][j]);
             } else { //Checa se o caracter na matriz é igual 1
-                matrizInt[i][j] = 1; //Inseri na matriz de inteiro o 1
+                matrizInt[i][j] = 1; //Insere na matriz de inteiro o 1
                 printf("%i", matrizInt[i][j]);
             }
         }
