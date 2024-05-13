@@ -20,7 +20,7 @@ int distMinima(int dist[], bool relaxado[]){ //Econtra o vertice mais próximo qu
 }
 
 void printSolution(int dist[]) {//Apenas pra teste
-   printf("Vertice \t Distancia da Origem\n");
+   printf("\nVertice \t Distancia da Origem\n");
    for (i = 0; i < numVertices; i++)
       printf("%d \t\t %d\n", i+1, dist[i]);
 }
