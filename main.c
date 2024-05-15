@@ -48,6 +48,51 @@ void dijkstra(int grafo[numVertices][numVertices], int raiz){//Encontra o menor 
     printSolution(dist);//TESTE
 }
 
+
+
+
+bool T(int grafo[numVertices][numVertices], int raiz, int dest){//Encontra o menor caminho de um vertice para os outros
+    int dist[numVertices], cont, v; //dist[] é o vetor que armazena a distãncia da raiz para os outros vertices
+    bool relaxado[numVertices]; //Vetor para controlar qual vertice foi relaxado
+	bool r;
+
+    for(i = 0; i < numVertices; i++){
+    	dist[i] = INT_MAX, relaxado[i] = false;//Inicializa a distãnica da raiz para todos os outros vertices como "infinito" e relxado como fal
+	}
+	
+    dist[raiz] = 0;//Inicializa a distãnica da matriz pra ela mesma como 0
+
+    for(cont = 0; cont < numVertices-1; cont++){
+    	int u = distMinima(dist, relaxado);//U é próximo vertice a ser relaxado
+    	relaxado[u] = true;//Relaxa o vertice
+
+    	for (v = 0; v < numVertices; v++){
+    		if (!relaxado[v] && grafo[u][v] && dist[u] != INT_MAX && dist[u]+grafo[u][v] < dist[v]){ //Checa toda a lógica do algoritmo de dijkstra
+         	dist[v] = dist[u] + grafo[u][v];//Soma os valores de duas arestas e atualiza a distância do vertice atual
+			}
+	   }
+    }
+    printSolution(dist);//TESTE
+    
+    if (dist[dest] > 0 && dist[dest]< 200) {
+	r = true;
+	}else {
+	r = false;
+	}
+	
+	return r;
+	
+	
+    
+}
+
+
+
+
+
+
+
+
 int main(int argc, char *argv[]) {
     FILE *file;
     
