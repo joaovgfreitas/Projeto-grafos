@@ -80,9 +80,7 @@ int main(int argc, char *argv[]) {
             for (int j = 0; j < numVertices; j++) {
                 fscanf(file, "%i", &grafo[i][j]); // Lê caracter por caracter e escreve na matriz de inteiros
                 backup[i][j] = grafo[i][j]; // Inicializa a matriz backup
-                printf("%i ", grafo[i][j]); // Exibe a MA
             }
-            printf("\n");
         }
         fclose(file); // Fecha o arquivo
 
@@ -120,10 +118,11 @@ int main(int argc, char *argv[]) {
 
         // Imprime os vértices que desconectam o grafo
         if (countDesconectam > 0) {
-            printf("\nAs Articulacoes sao os vertices: ");
+            printf("Articulacao: ");
             for (int i = 0; i < countDesconectam; i++) {
                 printf("%d ", articulacao[i] + 1);
             }
+            printf("\n");
         } else {
             printf("O grafo nao tem articulacao\n");
         }
