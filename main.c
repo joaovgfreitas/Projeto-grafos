@@ -106,7 +106,8 @@ int main(int argc, char *argv[]) {
             }
 
             if (!temCaminho) {
-                articulacao[countDesconectam++] = verticeRemover;
+                articulacao[countDesconectam] = verticeRemover;
+                countDesconectam++;
             }
 
             // Restaura a matriz de adjacência original
