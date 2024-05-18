@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
             // Testa se o grafo ainda é conexo
             temCaminho = true;
             for (int verticeDestino = 0; verticeDestino < numVertices; verticeDestino++) {
-                if (verticeDestino != verticeRemover && !existeCaminho(grafo, 0, verticeDestino)) {
+                if (verticeDestino != verticeRemover && !existeCaminho(grafo, verticeRemover == 0 ? 1: 0, verticeDestino)) {
                     temCaminho = false;
                     break;
                 }
