@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {// O(N^4)
     printf("Digite o nome do arquivo que deseja ler ou SAIR para terminar o programa: ");
     scanf("%s", arquivo);
 
-    while (strcmp(arquivo, "SAIR") != 0) { // Loop principal para leitura do arquivo e processamento // O(E)
+    while (strcmp(arquivo, "SAIR") != 0) { // Loop principal para leitura do arquivo e processamento // O(N^4)
         snprintf(arquivo, sizeof(arquivo), "%s.txt", arquivo); // Adiciona .txt ao final do nome escrito pelo usuário
         file = fopen(arquivo, "r"); // Carrega o arquivo
 
